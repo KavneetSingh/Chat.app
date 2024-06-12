@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Whatsapp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>List of all chats</h1>
+    
+    <div class="chats">
+        <% for(let i=0;i<chats.length;i++){ %>
+            <div class="chat">
+                <div class="dp"></div>
+                <div class="chat-box">
+                    <p>From: <i><%=chats[i].from%></i></p>
+                    <div class="msg">
+                        <p><%=chats[i].message%></p>
+                    </div>
+                    <p>To: <i><%=chats[i].to%></i></p>
+                    <div class="time">
+                        <span><p><%=chats[i].created_at.toString().split(" ")[4]%></p></span>
+                        <span><p><%=chats[i].created_at.toString().split(" ").slice(1,4).join("-")%></span>
+                    </div>
+                    <div class="modif">
+                        <form action="/chats/<%=chats[i]._id%>/edit">
+                            <button>Edit</button>
+                        </form>
+                        <form method="post" action="/chats/<%=chats[i]._id%>?_method=DELETE">
+                            <button>Delete</button>
+                        </form>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <br>
+        <% } %>
+    </div>
+
+    <form action="/chats/new">
+        <div id="new-btn">
+            <button class="new">New Chat</button>
+        </div>
+        
+    </form>
+
+    <footer>
+        <div>Your personal messages are <span class="green-footer"> end-to-end encrypted </span></div>
+        <!-- <div>Lol! You still believe it</div> -->
+        <br>
+    </footer>
+    
+</body>
+</html>
+

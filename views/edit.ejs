@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new Chat</title>
+</head>
+<body>
+    <h3>Edit your Chat</h3>
+    <form method="post" action="/chats/<%=data._id%>?_method=PATCH">
+        <p>Sender: <b><%=data.from%></b></p>
+        <p>Receiver: <b><%=data.to%></b></p>
+        <textarea name="message" id="" cols="30" rows="10" placeholder="Enter your message here"><%=data.message%></textarea> <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
